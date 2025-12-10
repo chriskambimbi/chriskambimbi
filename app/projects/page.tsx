@@ -1,8 +1,9 @@
 "use client"
 
-import Image from "next/image"
 import Link from "next/link"
 import { Github, ExternalLink } from "lucide-react"
+
+const basePath = '/chriskambimbi'
 
 const projects = [
   {
@@ -37,11 +38,10 @@ export default function ProjectsPage() {
             <div key={project.title} className="group">
               {/* Image */}
               <div className="relative w-full aspect-video rounded-lg overflow-hidden mb-4 bg-gray-100">
-                <Image
-                  src={project.image}
+                <img
+                  src={`${basePath}${project.image}`}
                   alt={project.title}
-                  fill
-                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
                 />
               </div>
 

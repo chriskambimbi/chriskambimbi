@@ -1,5 +1,6 @@
-import Image from "next/image"
 import { Linkedin, Github, Twitter, Mail } from "lucide-react"
+
+const basePath = '/chriskambimbi'
 
 export default function AboutPage() {
   return (
@@ -16,12 +17,10 @@ const IntroductionSection = () => {
       <div className="container mx-auto max-w-4xl">
         <div className="flex flex-col items-center text-center">
           <div className="w-48 h-48 relative mb-8">
-            <Image
-              src="/images/chris.jpg"
+            <img
+              src={`${basePath}/images/chris.jpg`}
               alt="Photo of Chris KAMBIMBI"
-              fill
-              className="rounded-full object-cover"
-              priority
+              className="rounded-full object-cover w-full h-full"
             />
           </div>
           <h1 className="text-3xl font-bold mb-2 font-roboto">Chris Kambimbi</h1>
