@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation"
-import { getBlogPost } from "@/lib/mdx"
+import { getBlogPost, getAllBlogPosts } from "@/lib/mdx"
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import { mdxComponents } from '@/components/mdx-components'
 import remarkGfm from 'remark-gfm'
@@ -9,6 +9,13 @@ import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypeKatex from 'rehype-katex'
 import BlogPostClient from '@/components/BlogPostClient'
 import { extractTocFromMdx } from '@/lib/toc'
+
+export function generateStaticParams() {
+  const posts = getAllBlogPosts()
+  return posts.map((post) => ({
+    slug: post.slug,
+  }))
+}
 
 export default async function BlogPostPage({
   params

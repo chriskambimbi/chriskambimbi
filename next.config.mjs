@@ -7,6 +7,9 @@ import rehypeKatex from 'rehype-katex'
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: 'export',
+  basePath: process.env.NODE_ENV === 'production' ? '/chriskambimbi' : '',
+  assetPrefix: process.env.NODE_ENV === 'production' ? '/chriskambimbi/' : '',
   typescript: {
     ignoreBuildErrors: true,
   },
@@ -14,6 +17,7 @@ const nextConfig = {
     unoptimized: true,
   },
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
+  trailingSlash: true,
 }
 
 const withMDX = createMDX({
