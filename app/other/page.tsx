@@ -1,4 +1,7 @@
+"use client"
+
 import { FileText, Presentation, Sheet, File, ExternalLink } from "lucide-react"
+import { getBasePath } from "@/lib/basePath"
 
 type ItemType = "presentation" | "document" | "spreadsheet" | "other"
 
@@ -111,9 +114,11 @@ function ItemCard({ item }: { item: OtherItem }) {
   const config = typeConfig[item.type]
   const Icon = config.icon
 
+  const href = getBasePath(item.url)
+
   return (
     <a
-      href={item.url}
+      href={href}
       target="_blank"
       rel="noopener noreferrer"
       className="group block border border-gray-200 rounded-lg p-5 hover:border-gray-300 hover:shadow-md transition-all duration-200"

@@ -2,6 +2,8 @@ import Image from 'next/image'
 import { ReactNode } from 'react'
 import { Citation } from './Citation'
 
+const basePath = process.env.NODE_ENV === 'production' ? '/chriskambimbi' : ''
+
 // Example box component - research paper figure style
 const ExampleBox = ({ title, children }: { title: string; children: ReactNode }) => (
   <div className="example-box">
@@ -51,15 +53,18 @@ export const mdxComponents = {
       {children}
     </p>
   ),
-  img: ({ src, alt, ...props }: { src?: string; alt?: string }) => (
-    <img
-      data-zoomable
-      src={src}
-      alt={alt || 'Figure'}
-      className="w-full max-w-3xl mx-auto medium-zoom-image cursor-zoom-in my-6"
-      {...props}
-    />
-  ),
+  img: ({ src, alt, ...props }: { src?: string; alt?: string }) => {
+    const imgSrc = src && src.startsWith('/') ? `${basePath}${src}` : src
+    return (
+      <img
+        data-zoomable
+        src={imgSrc}
+        alt={alt || 'Figure'}
+        className="w-full max-w-3xl mx-auto medium-zoom-image cursor-zoom-in my-6"
+        {...props}
+      />
+    )
+  },
   ul: ({ children, ...props }: { children: ReactNode }) => (
     <ul className="list-disc list-inside mb-3 text-gray-800 text-base font-serif" {...props}>
       {children}

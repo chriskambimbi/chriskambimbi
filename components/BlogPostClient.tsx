@@ -4,6 +4,8 @@ import { useEffect, useState } from "react"
 import { ReactNode } from "react"
 import type { TocItem } from "@/lib/toc"
 
+const basePath = process.env.NODE_ENV === 'production' ? '/chriskambimbi' : ''
+
 // Parse markdown links [text](url) into HTML anchor tags
 function parseMarkdownLinks(text: string): string {
   // Match [link text](url) pattern
@@ -133,7 +135,7 @@ export default function BlogPostClient({
           <figure className="cover-image">
             <img
               data-zoomable=""
-              src={coverImage}
+              src={coverImage.startsWith('/') ? `${basePath}${coverImage}` : coverImage}
               loading="lazy"
               alt=""
             />
