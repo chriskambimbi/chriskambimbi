@@ -18,7 +18,7 @@ const IntroductionSection = () => {
         <div className="flex flex-col items-center text-center">
           <div className="w-48 h-48 relative mb-8">
             <img
-              src={`${basePath}/images/chris.jpg`}
+              src={`${basePath}/images/chris.png`}
               alt="Photo of Chris KAMBIMBI"
               className="rounded-full object-cover w-full h-full"
             />
