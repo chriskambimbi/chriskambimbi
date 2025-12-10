@@ -1,4 +1,4 @@
-const basePath = process.env.NODE_ENV === 'production' ? '/chriskambimbi' : ''
+const basePath = '/chriskambimbi'
 
 export function getBasePath(path: string): string {
   if (path.startsWith('http://') || path.startsWith('https://')) {

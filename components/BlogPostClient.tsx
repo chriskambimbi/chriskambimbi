@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 import { ReactNode } from "react"
 import type { TocItem } from "@/lib/toc"
 
-const basePath = process.env.NODE_ENV === 'production' ? '/chriskambimbi' : ''
+const basePath = '/chriskambimbi'
 
 // Parse markdown links [text](url) into HTML anchor tags
 function parseMarkdownLinks(text: string): string {

@@ -2,7 +2,7 @@ import Image from 'next/image'
 import { ReactNode } from 'react'
 import { Citation } from './Citation'
 
-const basePath = process.env.NODE_ENV === 'production' ? '/chriskambimbi' : ''
+const basePath = '/chriskambimbi'
 
 // Example box component - research paper figure style
 const ExampleBox = ({ title, children }: { title: string; children: ReactNode }) => (
