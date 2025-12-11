@@ -76,6 +76,14 @@ const NavLinks = ({ pathname }: { pathname: string }) => (
       Blog
     </Link>
     <Link
+      href="/reading"
+      className={`text-gray-600 hover:text-gray-900 hover:underline transition duration-300 ${
+        pathname.startsWith("/reading") ? "text-gray-900 underline" : ""
+      }`}
+    >
+      Reading
+    </Link>
+    <Link
       href="/other"
       className={`text-gray-600 hover:text-gray-900 hover:underline transition duration-300 ${
         pathname.startsWith("/other") ? "text-gray-900 underline" : ""
