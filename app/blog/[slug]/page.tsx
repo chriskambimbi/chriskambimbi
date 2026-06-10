@@ -1,5 +1,7 @@
+import type { Metadata } from "next"
 import { notFound } from "next/navigation"
-import { getBlogPost, getAllBlogPosts } from "@/lib/mdx"
+import { getBlogPost, getAllBlogPosts, getExcerpt } from "@/lib/mdx"
+import { absoluteUrl, DEFAULT_OG_IMAGE, SITE_AUTHOR } from "@/lib/seo"
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import { mdxComponents } from '@/components/mdx-components'
 import remarkGfm from 'remark-gfm'
@@ -15,6 +17,47 @@ export function generateStaticParams() {
   return posts.map((post) => ({
     slug: post.slug,
   }))
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>
+}): Promise<Metadata> {
+  const { slug } = await params
+  const post = getBlogPost(slug)
+
+  if (!post) {
+    return { title: "Post not found" }
+  }
+
+  const description = post.description || getExcerpt(post.content)
+  const url = absoluteUrl(`/blog/${slug}`)
+  const ogImage = post.coverImage ? absoluteUrl(post.coverImage) : DEFAULT_OG_IMAGE
+
+  return {
+    title: post.title,
+    description,
+    keywords: post.tags,
+    authors: [{ name: post.author || SITE_AUTHOR }],
+    alternates: { canonical: url },
+    openGraph: {
+      type: "article",
+      title: post.title,
+      description,
+      url,
+      publishedTime: `${post.date} ${post.year}`,
+      authors: [post.author || SITE_AUTHOR],
+      tags: post.tags,
+      images: [{ url: ogImage, alt: post.title }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description,
+      images: [ogImage],
+    },
+  }
 }
 
 export default async function BlogPostPage({
@@ -50,7 +93,25 @@ export default async function BlogPostPage({
   // Extract table of contents from main content
   const toc = extractTocFromMdx(mainContent)
 
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.description || getExcerpt(post.content),
+    image: post.coverImage ? absoluteUrl(post.coverImage) : DEFAULT_OG_IMAGE,
+    datePublished: `${post.date} ${post.year}`,
+    keywords: post.tags?.join(", "),
+    author: { "@type": "Person", name: post.author || SITE_AUTHOR, url: absoluteUrl("/about") },
+    publisher: { "@type": "Person", name: SITE_AUTHOR },
+    mainEntityOfPage: { "@type": "WebPage", "@id": absoluteUrl(`/blog/${slug}`) },
+  }
+
   return (
+    <>
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+    />
     <BlogPostClient
       title={post.title}
       author={post.author}
@@ -74,5 +135,6 @@ export default async function BlogPostPage({
         }}
       />
     </BlogPostClient>
+    </>
   )
 }

@@ -34,4 +34,6 @@ Thumbs.db
 
 # Lock files (optional, but commonly ignored for libraries)
 *.lock
-*.~lock.*
+
+# LibreOffice/OpenOffice lock files (e.g. .~lock.foo.pptx#)
+.~lock.*

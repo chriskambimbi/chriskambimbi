@@ -87,12 +87,12 @@ const typeConfig = {
 
 export default function OtherPage() {
   return (
-    <div className="min-h-screen bg-white text-gray-900">
+    <div className="min-h-screen bg-white text-gray-900 dark:bg-gray-950 dark:text-gray-100">
       <section className="py-16 px-4">
         <div className="container mx-auto max-w-5xl">
           <div className="mb-12">
             <h1 className="text-3xl font-bold mb-3 font-roboto">Other</h1>
-            <p className="text-gray-500">Presentations, documents, spreadsheets, and other resources.</p>
+            <p className="text-gray-500 dark:text-gray-400">Presentations, documents, spreadsheets, and other resources.</p>
           </div>
 
           {items.length > 0 ? (
@@ -121,20 +121,20 @@ function ItemCard({ item }: { item: OtherItem }) {
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="group block border border-gray-200 rounded-lg p-5 hover:border-gray-300 hover:shadow-md transition-all duration-200"
+      className="group block border border-gray-200 dark:border-gray-800 rounded-lg p-5 hover:border-gray-300 dark:hover:border-gray-700 hover:shadow-md transition-all duration-200"
     >
       <div className="flex items-start justify-between mb-3">
         <div className={`p-2 rounded-lg ${config.bg}`}>
           <Icon className={`w-5 h-5 ${config.color}`} />
         </div>
-        <ExternalLink className="w-4 h-4 text-gray-300 group-hover:text-gray-500 transition-colors" />
+        <ExternalLink className="w-4 h-4 text-gray-300 dark:text-gray-600 group-hover:text-gray-500 dark:group-hover:text-gray-400 transition-colors" />
       </div>
 
-      <h3 className="font-semibold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors line-clamp-2">
+      <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-2">
         {item.title}
       </h3>
 
-      <p className="text-sm text-gray-500 mb-3 line-clamp-2">
+      <p className="text-sm text-gray-500 dark:text-gray-400 mb-3 line-clamp-2">
         {item.description}
       </p>
 

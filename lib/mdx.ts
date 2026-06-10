@@ -11,8 +11,26 @@ export interface BlogPost {
   date: string
   year: number
   coverImage?: string
+  description?: string
   tags?: string[]
   content: string
+}
+
+// Derive a plain-text summary from MDX content for meta descriptions.
+// Falls back to this when a post has no explicit `description` in frontmatter.
+export function getExcerpt(content: string, maxLength = 160): string {
+  const plain = content
+    .replace(/<[^>]+>/g, "") // strip JSX/HTML tags (e.g. <Citation />)
+    .replace(/^#{1,6}\s+.*$/gm, "") // strip markdown headings
+    .replace(/!\[[^\]]*\]\([^)]*\)/g, "") // strip images
+    .replace(/\[([^\]]*)\]\([^)]*\)/g, "$1") // unwrap links to their text
+    .replace(/[*_`>#-]/g, "") // strip remaining markdown punctuation
+    .replace(/\\([$%&#_{}])/g, "$1") // unescape escaped chars
+    .replace(/\s+/g, " ")
+    .trim()
+
+  if (plain.length <= maxLength) return plain
+  return plain.slice(0, maxLength).replace(/\s+\S*$/, "") + "…"
 }
 
 export function getAllBlogPosts(): BlogPost[] {
@@ -33,6 +51,7 @@ export function getAllBlogPosts(): BlogPost[] {
         date: data.date || '',
         year: data.year || new Date().getFullYear(),
         coverImage: data.coverImage,
+        description: data.description,
         tags: data.tags || [],
         content,
       }

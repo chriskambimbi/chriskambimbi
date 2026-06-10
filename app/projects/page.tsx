@@ -2,8 +2,7 @@
 
 import Link from "next/link"
 import { Github, ExternalLink } from "lucide-react"
-
-const basePath = '/chriskambimbi'
+import { getBasePath } from "@/lib/basePath"
 
 const projects = [
   {
@@ -29,29 +28,29 @@ const projects = [
 
 export default function ProjectsPage() {
   return (
-    <div className="min-h-screen bg-white text-gray-900 pt-16">
+    <div className="min-h-screen bg-white text-gray-900 dark:bg-gray-950 dark:text-gray-100 pt-16">
       <main className="container mx-auto px-4 py-16 max-w-6xl">
-        <h1 className="text-4xl font-bold mb-12 font-roboto text-gray-900">Projects</h1>
+        <h1 className="text-4xl font-bold mb-12 font-roboto text-gray-900 dark:text-gray-100">Projects</h1>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {projects.map((project) => (
             <div key={project.title} className="group">
               {/* Image */}
-              <div className="relative w-full aspect-video rounded-lg overflow-hidden mb-4 bg-gray-100">
+              <div className="relative w-full aspect-video rounded-lg overflow-hidden mb-4 bg-gray-100 dark:bg-gray-800">
                 <img
-                  src={`${basePath}${project.image}`}
+                  src={getBasePath(project.image)}
                   alt={project.title}
                   className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
                 />
               </div>
 
               {/* Title */}
-              <h2 className="text-xl font-bold mb-2 font-roboto text-gray-900">
+              <h2 className="text-xl font-bold mb-2 font-roboto text-gray-900 dark:text-gray-100">
                 {project.title}
               </h2>
 
               {/* Description */}
-              <p className="text-gray-600 text-sm mb-4 line-clamp-2">
+              <p className="text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-2">
                 {project.description}
               </p>
 
@@ -63,7 +62,7 @@ export default function ProjectsPage() {
                     href={link.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-sm text-gray-600 hover:text-gray-900 transition-colors"
+                    className="inline-flex items-center gap-1.5 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors"
                   >
                     {link.icon === "github" ? <Github size={16} /> : <ExternalLink size={16} />}
                     {link.label}

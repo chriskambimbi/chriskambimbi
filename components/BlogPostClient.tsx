@@ -3,8 +3,7 @@
 import { useEffect, useState } from "react"
 import { ReactNode } from "react"
 import type { TocItem } from "@/lib/toc"
-
-const basePath = '/chriskambimbi'
+import { getBasePath } from "@/lib/basePath"
 
 // Parse markdown links [text](url) into HTML anchor tags
 function parseMarkdownLinks(text: string): string {
@@ -37,9 +36,10 @@ export default function BlogPostClient({
   useEffect(() => {
     if (typeof window !== "undefined") {
       import("medium-zoom").then((mediumZoom) => {
+        const isDark = document.documentElement.classList.contains("dark")
         const zoom = mediumZoom.default("[data-zoomable]", {
           margin: 48,
-          background: "rgba(255, 255, 255, 0.95)",
+          background: isDark ? "rgba(3, 7, 18, 0.95)" : "rgba(255, 255, 255, 0.95)",
           scrollOffset: 0,
         })
         return () => {
@@ -135,7 +135,7 @@ export default function BlogPostClient({
           <figure className="cover-image">
             <img
               data-zoomable=""
-              src={coverImage.startsWith('/') ? `${basePath}${coverImage}` : coverImage}
+              src={coverImage.startsWith('/') ? getBasePath(coverImage) : coverImage}
               loading="lazy"
               alt=""
             />

@@ -1,8 +1,7 @@
 import Image from 'next/image'
 import { ReactNode } from 'react'
 import { Citation } from './Citation'
-
-const basePath = '/chriskambimbi'
+import { getBasePath } from '@/lib/basePath'
 
 // Example box component - research paper figure style
 const ExampleBox = ({ title, children }: { title: string; children: ReactNode }) => (
@@ -54,7 +53,7 @@ export const mdxComponents = {
     </p>
   ),
   img: ({ src, alt, ...props }: { src?: string; alt?: string }) => {
-    const imgSrc = src && src.startsWith('/') ? `${basePath}${src}` : src
+    const imgSrc = src && src.startsWith('/') ? getBasePath(src) : src
     return (
       <img
         data-zoomable

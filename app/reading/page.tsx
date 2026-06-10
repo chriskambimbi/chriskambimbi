@@ -139,17 +139,17 @@ const papers: PaperItem[] = [
 
 export default function ReadingPage() {
   return (
-    <div className="min-h-screen bg-white text-gray-900">
+    <div className="min-h-screen bg-white text-gray-900 dark:bg-gray-950 dark:text-gray-100">
       <section className="py-16 px-4">
         <div className="container mx-auto max-w-4xl">
           <div className="mb-12">
             <h1 className="text-3xl font-bold mb-3 font-roboto">Reading</h1>
-            <p className="text-gray-500">Blogs, books, and papers that have shaped my thinking.</p>
+            <p className="text-gray-500 dark:text-gray-400">Blogs, books, and papers that have shaped my thinking.</p>
           </div>
 
           {/* Blogs Section */}
           <div className="mb-16">
-            <h2 className="text-xl font-semibold mb-6 font-roboto text-gray-900 border-b pb-2">Blogs</h2>
+            <h2 className="text-xl font-semibold mb-6 font-roboto text-gray-900 dark:text-gray-100 border-b border-gray-200 dark:border-gray-800 pb-2">Blogs</h2>
 
             <div className="space-y-10">
               {(Object.keys(categoryConfig) as BlogCategory[]).map((category) => (
@@ -165,7 +165,7 @@ export default function ReadingPage() {
           {/* Books Section */}
           {books.length > 0 && (
             <div className="mb-16">
-              <h2 className="text-xl font-semibold mb-6 font-roboto text-gray-900 border-b pb-2">Books</h2>
+              <h2 className="text-xl font-semibold mb-6 font-roboto text-gray-900 dark:text-gray-100 border-b border-gray-200 dark:border-gray-800 pb-2">Books</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {books.map((book, index) => (
                   <BookCard key={index} item={book} />
@@ -177,7 +177,7 @@ export default function ReadingPage() {
           {/* Papers Section */}
           {papers.length > 0 && (
             <div className="mb-16">
-              <h2 className="text-xl font-semibold mb-6 font-roboto text-gray-900 border-b pb-2">Papers</h2>
+              <h2 className="text-xl font-semibold mb-6 font-roboto text-gray-900 dark:text-gray-100 border-b border-gray-200 dark:border-gray-800 pb-2">Papers</h2>
               <div className="space-y-3">
                 {papers.map((paper, index) => (
                   <PaperCard key={index} item={paper} />
@@ -203,7 +203,7 @@ function BlogCategorySection({ category, items }: { category: BlogCategory; item
         <div className={`p-1.5 rounded ${config.bg}`}>
           <Icon className={`w-4 h-4 ${config.color}`} />
         </div>
-        <h3 className="text-sm font-medium text-gray-700">{config.label}</h3>
+        <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300">{config.label}</h3>
         <span className="text-xs text-gray-400">({items.length})</span>
       </div>
 
@@ -222,16 +222,16 @@ function BlogCard({ item }: { item: BlogItem }) {
       href={item.url}
       target="_blank"
       rel="noopener noreferrer"
-      className="group flex items-start gap-3 p-3 rounded-lg border border-gray-100 hover:border-gray-200 hover:bg-gray-50 transition-all duration-200"
+      className="group flex items-start gap-3 p-3 rounded-lg border border-gray-100 dark:border-gray-800 hover:border-gray-200 dark:hover:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-900 transition-all duration-200"
     >
       <div className="flex-1 min-w-0">
         <div className="flex items-center gap-2">
-          <h4 className="font-medium text-gray-900 text-sm group-hover:text-blue-600 transition-colors truncate">
+          <h4 className="font-medium text-gray-900 dark:text-gray-100 text-sm group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors truncate">
             {item.title}
           </h4>
-          <ExternalLink className="w-3 h-3 text-gray-300 flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity" />
+          <ExternalLink className="w-3 h-3 text-gray-300 dark:text-gray-600 flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity" />
         </div>
-        <p className="text-xs text-gray-500 mt-0.5">{item.author}</p>
+        <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">{item.author}</p>
         {item.description && (
           <p className="text-xs text-gray-400 mt-1 line-clamp-1">{item.description}</p>
         )}
@@ -242,15 +242,15 @@ function BlogCard({ item }: { item: BlogItem }) {
 
 function BookCard({ item }: { item: BookItem }) {
   const content = (
-    <div className="p-4 rounded-lg border border-gray-200 hover:border-gray-300 hover:shadow-sm transition-all duration-200">
+    <div className="p-4 rounded-lg border border-gray-200 dark:border-gray-800 hover:border-gray-300 dark:hover:border-gray-700 hover:shadow-sm transition-all duration-200">
       <div className="flex items-start gap-3">
-        <div className="p-2 rounded bg-purple-50 flex-shrink-0">
+        <div className="p-2 rounded bg-purple-50 dark:bg-purple-950/40 flex-shrink-0">
           <Book className="w-4 h-4 text-purple-500" />
         </div>
         <div className="flex-1 min-w-0">
-          <h4 className="font-medium text-gray-900 text-sm">{item.title}</h4>
-          <p className="text-xs text-gray-500 mt-0.5">{item.author}</p>
-          {item.notes && <p className="text-xs text-gray-600 mt-2">{item.notes}</p>}
+          <h4 className="font-medium text-gray-900 dark:text-gray-100 text-sm">{item.title}</h4>
+          <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">{item.author}</p>
+          {item.notes && <p className="text-xs text-gray-600 dark:text-gray-400 mt-2">{item.notes}</p>}
           {item.date && <p className="text-xs text-gray-400 mt-1">{item.date}</p>}
         </div>
         {item.url && <ExternalLink className="w-3 h-3 text-gray-300 flex-shrink-0" />}
@@ -275,17 +275,17 @@ function PaperCard({ item }: { item: PaperItem }) {
       href={item.url}
       target="_blank"
       rel="noopener noreferrer"
-      className="group flex items-start gap-3 p-3 rounded-lg border border-gray-100 hover:border-gray-200 hover:bg-gray-50 transition-all duration-200"
+      className="group flex items-start gap-3 p-3 rounded-lg border border-gray-100 dark:border-gray-800 hover:border-gray-200 dark:hover:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-900 transition-all duration-200"
     >
-      <div className="p-1.5 rounded bg-blue-50 flex-shrink-0">
+      <div className="p-1.5 rounded bg-blue-50 dark:bg-blue-950/40 flex-shrink-0">
         <FileText className="w-4 h-4 text-blue-500" />
       </div>
       <div className="flex-1 min-w-0">
-        <h4 className="font-medium text-gray-900 text-sm group-hover:text-blue-600 transition-colors">
+        <h4 className="font-medium text-gray-900 dark:text-gray-100 text-sm group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
           {item.title}
         </h4>
-        <p className="text-xs text-gray-500 mt-0.5">{item.authors}</p>
-        {item.notes && <p className="text-xs text-gray-600 mt-1">{item.notes}</p>}
+        <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">{item.authors}</p>
+        {item.notes && <p className="text-xs text-gray-600 dark:text-gray-400 mt-1">{item.notes}</p>}
         {item.date && <span className="text-xs text-gray-400">{item.date}</span>}
       </div>
       <ExternalLink className="w-3 h-3 text-gray-300 flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity" />
