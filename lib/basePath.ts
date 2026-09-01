@@ -1,4 +1,4 @@
-const basePath = '/chriskambimbi'
+const basePath = ''
 
 export function getBasePath(path: string): string {
   if (path.startsWith('http://') || path.startsWith('https://')) {

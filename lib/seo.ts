@@ -1,7 +1,6 @@
 // Centralized SEO configuration.
-// SITE_URL includes the GitHub Pages basePath because the site is served from
-// https://chriskambimbi.github.io/chriskambimbi (repo: chriskambimbi/chriskambimbi).
-export const SITE_URL = "https://chriskambimbi.github.io/chriskambimbi"
+// The site is served from the domain root (repo: chriskambimbi/chriskambimbi.github.io).
+export const SITE_URL = "https://chriskambimbi.github.io"
 
 export const SITE_NAME = "Chris Kambimbi"
 export const SITE_AUTHOR = "Chris Kambimbi"

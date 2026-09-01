@@ -8,8 +8,6 @@ import rehypeKatex from 'rehype-katex'
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export',
-  basePath: '/chriskambimbi',
-  assetPrefix: '/chriskambimbi/',
   typescript: {
     ignoreBuildErrors: true,
   },
