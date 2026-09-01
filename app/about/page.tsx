@@ -6,12 +6,12 @@ import { getBasePath } from "@/lib/basePath"
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Chris Kambimbi is an AI safety researcher and software engineer at LibrAI and Fudan University's FVL Lab, investigating vulnerabilities in large language models.",
+    "Chris Kambimbi is a Research Engineer at LibrAI, investigating vulnerabilities in large language models.",
   alternates: { canonical: "/about" },
   openGraph: {
     title: "About Chris Kambimbi",
     description:
-      "AI safety researcher and software engineer at LibrAI and Fudan University, investigating vulnerabilities in large language models.",
+      "Research Engineer at LibrAI, investigating vulnerabilities in large language models.",
     url: absoluteUrl("/about"),
     type: "profile",
     images: [{ url: DEFAULT_OG_IMAGE, alt: "Chris Kambimbi" }],
@@ -34,7 +34,7 @@ const IntroductionSection = () => {
         <div className="flex flex-col items-center text-center">
           <div className="w-48 h-48 relative mb-8">
             <img
-              src={getBasePath("/images/chris.png")}
+              src={getBasePath("/images/chris.jpg")}
               alt="Photo of Chris KAMBIMBI"
               className="rounded-full object-cover w-full h-full"
             />
@@ -43,8 +43,7 @@ const IntroductionSection = () => {
           <p className="text-gray-500 dark:text-gray-400 mb-6">AI Safety Researcher & Software Engineer</p>
 
           <p className="text-gray-700 dark:text-gray-300 font-open-sans max-w-2xl mb-8 leading-relaxed">
-            Software Engineering student at Fudan University with a focus on AI safety. Currently a student researcher
-            at{" "}
+            Research Engineer at{" "}
             <a
               href="https://www.librai.tech/"
               target="_blank"
@@ -53,8 +52,7 @@ const IntroductionSection = () => {
             >
               LibrAI
             </a>
-            , investigating vulnerabilities in large language models. I love building, testing, and prototyping new
-            ideas.
+            .
           </p>
 
           <div className="flex items-center gap-4 mb-8">
@@ -131,17 +129,24 @@ const ResumeSection = () => {
             <div className="space-y-4">
               <div className="flex justify-between items-start">
                 <div>
+                  <h3 className="font-medium">Research Engineer</h3>
+                  <p className="text-gray-500 dark:text-gray-400 text-sm">LibrAI</p>
+                </div>
+                <span className="text-gray-400 text-sm">2026–Present</span>
+              </div>
+              <div className="flex justify-between items-start">
+                <div>
                   <h3 className="font-medium">AI Safety Student Researcher</h3>
                   <p className="text-gray-500 dark:text-gray-400 text-sm">LibrAI</p>
                 </div>
-                <span className="text-gray-400 text-sm">2025–Present</span>
+                <span className="text-gray-400 text-sm">2025–2025</span>
               </div>
               <div className="flex justify-between items-start">
                 <div>
                   <h3 className="font-medium">AI Safety Researcher</h3>
                   <p className="text-gray-500 dark:text-gray-400 text-sm">Fudan University FVL Lab</p>
                 </div>
-                <span className="text-gray-400 text-sm">2023–Present</span>
+                <span className="text-gray-400 text-sm">2023–2026</span>
               </div>
               <div className="flex justify-between items-start">
                 <div>
@@ -156,7 +161,7 @@ const ResumeSection = () => {
           {/* Research Interests */}
           <div>
             <h2 className="text-sm font-semibold uppercase tracking-wider text-gray-400 mb-4">Research Interests</h2>
-            <p className="text-gray-700 dark:text-gray-300 text-sm">AI Safety · Medical AI · Robotics</p>
+            <p className="text-gray-700 dark:text-gray-300 text-sm">AI Safety · Red Teaming · AI Alignment</p>
           </div>
         </div>
       </div>

@@ -7,10 +7,10 @@ export const SITE_AUTHOR = "Chris Kambimbi"
 
 export const DEFAULT_TITLE = "Chris Kambimbi — AI Safety Researcher & Software Engineer"
 export const DEFAULT_DESCRIPTION =
-  "Chris Kambimbi is an AI safety researcher and software engineer at LibrAI and Fudan University, investigating vulnerabilities in large language models. Writing on AI safety, medical AI, and robotics."
+  "Chris Kambimbi is a Research Engineer at LibrAI, investigating vulnerabilities in large language models. Writing on AI safety, red teaming, and AI alignment."
 
 // Default share image used for Open Graph / Twitter cards.
-export const DEFAULT_OG_IMAGE = `${SITE_URL}/images/chris.png`
+export const DEFAULT_OG_IMAGE = `${SITE_URL}/images/chris.jpg`
 
 // Build an absolute URL for a site-relative path (e.g. "/about", "/images/x.png").
 // Always use this for canonical URLs and og:image so the basePath is preserved.

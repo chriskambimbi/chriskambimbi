@@ -100,15 +100,12 @@ const personJsonLd = {
   image: DEFAULT_OG_IMAGE,
   jobTitle: "AI Safety Researcher & Software Engineer",
   description: DEFAULT_DESCRIPTION,
-  worksFor: [
-    { "@type": "Organization", name: "LibrAI", url: "https://www.librai.tech/" },
-    { "@type": "Organization", name: "Fudan University", url: "https://www.fudan.edu.cn/en/" },
-  ],
+  worksFor: [{ "@type": "Organization", name: "LibrAI", url: "https://www.librai.tech/" }],
   alumniOf: [
     { "@type": "CollegeOrUniversity", name: "Fudan University" },
     { "@type": "CollegeOrUniversity", name: "Tongji University" },
   ],
-  knowsAbout: ["AI Safety", "Large Language Models", "Adversarial Machine Learning", "Medical AI", "Robotics"],
+  knowsAbout: ["AI Safety", "Red Teaming", "AI Alignment", "Large Language Models", "Adversarial Machine Learning"],
   sameAs: [
     "https://www.linkedin.com/in/chris-kambimbi-83757a176/",
     "https://github.com/chriskambimbi",
